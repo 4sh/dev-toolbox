@@ -56,7 +56,8 @@ echo "
 FAILED - docker artifact registry access failed
  
 please verify that you have properly configure docker to access europe-docker.pkg.dev
-   gcloud auth configure-docker europe-docker.pkg.dev
+   gcloud login
+   gcloud beta auth configure-docker europe-docker.pkg.dev
  
 see instructions here:
   https://unison.4sh.fr/display/4DEV/gcloud
