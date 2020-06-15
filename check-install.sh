@@ -1,9 +1,6 @@
 #!/bin/bash
 
 echo "
------ sdk version"
-sdk version
-echo "
 ----- java version"
 java -version
 echo "
