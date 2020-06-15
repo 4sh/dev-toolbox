@@ -46,7 +46,8 @@ maybe you didn't install ctx plugin with k krew install ctx
 please double check the installation instructions here:
   https://unison.4sh.fr/display/4DEV/kubectl"
   
-echo "\n----- kubectl namespaces"
+echo "
+----- kubectl namespaces"
 k ns | head
   
 echo "
