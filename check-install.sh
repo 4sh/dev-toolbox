@@ -64,3 +64,15 @@ please verify that you have properly configure docker to access europe-docker.pk
 see instructions here:
   https://unison.4sh.fr/display/4DEV/gcloud
 "
+
+echo "
+
+--------------------------------------------------------------------------------------------------
+please check the output to see if everything is ok
+
+you can have an example output here: 
+   https://unison.4sh.fr/pages/viewpage.action?pageId=72319001
+
+if a tool seem to not be properly installed, double check installation instructions here:
+   https://unison.4sh.fr/display/4DEV/Tooling
+--------------------------------------------------------------------------------------------------   
