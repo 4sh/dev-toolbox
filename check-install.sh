@@ -20,7 +20,7 @@ echo "
 kubectl version
 echo "
 ----- kubectl krew version"
-k krew version
+kubectl krew version
 echo "
 ----- kustomize version"
 kustomize version
@@ -38,7 +38,7 @@ echo "user = $(git config user.name) - user email = $(git config user.email)"
   
 echo "
 ----- kubectl quatreeapp context"
-(k ctx | grep quatreapp) || echo "
+(kubectl ctx | grep quatreapp) || echo "
 FAILED - k ctx failed
  
 maybe you didn't install ctx plugin with k krew install ctx
@@ -48,7 +48,7 @@ please double check the installation instructions here:
   
 echo "
 ----- kubectl namespaces"
-k ns | head
+kubectl ns | head
   
 echo "
 ----- docker artifact registry access"
