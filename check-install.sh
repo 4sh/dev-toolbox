@@ -1,31 +1,43 @@
 #!/bin/bash
 
-echo "\n----- sdk version"
+echo "
+----- sdk version"
 sdk version
-echo "\n----- java version"
+echo "
+----- java version"
 java -version
-echo "\n----- git version"
+echo "
+----- git version"
 git version
-echo "\n----- docker version"
+echo "
+----- docker version"
 docker version
-echo "\n----- gcloud version"
+echo "
+----- gcloud version"
 gcloud version
-echo "\n----- kubectl version"
+echo "
+----- kubectl version"
 kubectl version
-echo "\n----- kubectl krew version"
+echo "
+----- kubectl krew version"
 k krew version
-echo "\n----- kustomize version"
+echo "
+----- kustomize version"
 kustomize version
-echo "\n----- helm version"
+echo "
+----- helm version"
 helm version
-echo "\n----- stern version"
+echo "
+----- stern version"
 stern --version
   
   
-echo "\n----- git config"
+echo "
+----- git config"
 echo "user = $(git config user.name) - user email = $(git config user.email)"
   
-echo "\n----- kubectl quatreeapp context"
+echo "
+----- kubectl quatreeapp context"
 (k ctx | grep quatreapp) || echo "
 FAILED - k ctx failed
  
@@ -37,7 +49,8 @@ please double check the installation instructions here:
 echo "\n----- kubectl namespaces"
 k ns | head
   
-echo "\n----- docker artifact registry access"
+echo "
+----- docker artifact registry access"
 (
  export DOCKER_CLI_EXPERIMENTAL=enabled
  docker manifest inspect europe-docker.pkg.dev/quatreapp/k8straining/myapp-srv-xhn:latest > /dev/null \
