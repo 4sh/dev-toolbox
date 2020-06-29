@@ -1,0 +1,11 @@
+function k () { kubectl $@; }
+
+function yamllint { docker run --rm -i -v $(pwd):/data cytopia/yamllint $@; }
+function yaml2json { docker run --rm -i -v $(pwd):/work -w /work simplealpine/yaml2json $@; }
+function jq { docker run --rm -i stedolan/jq $@; }
+
+function kustomize { docker run --rm -i -v $(pwd):/work -w /work nekottyo/kustomize-kubeval kustomize $@; }
+function kubeval { docker run --rm -i -v $(pwd):/work -w /work nekottyo/kustomize-kubeval kubeval $@; }
+function popeye { docker run --rm -it -v $HOME/.kube:/root/.kube quay.io/derailed/popeye:latest $@; }
+function k9s { docker run --rm -it -v $HOME/.kube/config:/root/.kube/config quay.io/derailed/k9s $@; }
+
