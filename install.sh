@@ -20,4 +20,7 @@ fi
 
 echo '' >> $HOME/$target
 echo 'source $HOME/.4dev-toolbox/toolsrc' >> $HOME/$target
-echo "installed in $target - please open a new shell to get functions"
+
+source $HOME/.4dev-toolbox/toolsrc
+
+echo "installed in $target and ready to use"
