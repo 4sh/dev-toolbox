@@ -19,9 +19,6 @@ echo "
 ----- kubectl krew version"
 kubectl krew version
 echo "
------ kustomize version"
-kustomize version
-echo "
 ----- helm version"
 helm version
 echo "
