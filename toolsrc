@@ -49,6 +49,14 @@ Functions:
                 more information:
                    https://kustomize.io/
 
+  helm          package manager for kubernetes
+                basic usage:
+                    helm search hub <something>
+                    helm show values <chart>
+                    helm upgrade --install <release> <chart> -f <config.yaml>
+                more information:
+                    helm.sh
+
   kubeval       tool for validating a Kubernetes YAML or JSON configuration file
                 basic usage:
                    kubeval mydescriptor.yaml
@@ -77,6 +85,14 @@ function yaml2json { docker run --rm -i -v $(pwd):/work -w /work simplealpine/ya
 function jq { docker run --rm -i stedolan/jq $@; }
 
 function kustomize { docker run --rm -i -v $(pwd):/work -w /work nekottyo/kustomize-kubeval kustomize $@; }
+function helm {
+    docker run -i --rm -v $(pwd):/apps -v ~/.kube:/root/.kube -v ~/.helm:/root/.helm \
+        -e HELM_REPOSITORY_CONFIG=/root/.helm/repositories.yaml \
+        -e HELM_REPOSITORY_CACHE=/root/.helm/repository \
+        -e HELM_REGISTRY_CONFIG=/root/.helm/registry.json \
+        -e HELM_PLUGINS=/root/.helm/plugins \
+        alpine/helm $@;
+}
 function kubeval { docker run --rm -i -v $(pwd):/work -w /work nekottyo/kustomize-kubeval kubeval $@; }
 function popeye { docker run --rm -it -v $HOME/.kube:/root/.kube quay.io/derailed/popeye:latest $@; }
 function k9s { docker run --rm -it -v $HOME/.kube/config:/root/.kube/config quay.io/derailed/k9s $@; }
