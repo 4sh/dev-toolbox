@@ -1,4 +1,76 @@
-function k () { kubectl $@; }
+function 4dev-update () {
+  echo "updating ~/4dev-toolbox..."
+  git -C $HOME/.4dev-toolbox pull --rebase;
+  echo "done - you can list functions with 4dev-help"
+}
+
+function 4dev-help () {
+  cat << EOF
+4dev-toolbox - a list of dockerized cli commands
+
+4dev-toolbox consists of a list of shell functions to use dockerized versions of useful CLIs
+
+Thanks to Docker, dockerized commands benefits from:
+  - auto download on first use
+  - context isolation: no more environment specific conflicts
+  - context isolation: better security with commands having access only to mounted volumes (usually current directory)
+
+Caveats:
+  dockerized CLIs have limited access to your filesystem, usually only current directory and some standard config files
+  it means you can't access parent directory when using such commands - eg yamllint ../myfile.yaml won't work
+
+Alias:
+  k             kubectl
+
+Functions:
+  # YAML
+  yamllint      tool used to lint yaml files
+                basic usage:
+                   yamllint path/to/file.yaml
+                more information:
+                   https://github.com/adrienverge/yamllint
+
+  yaml2json     tool to convert yaml files to json
+                basic usage:
+                   yaml2json path/to.file.yaml
+                   yaml2json path/to.file.yaml | jq . # pipe with jq for pretty formatting
+                more information:
+                   https://github.com/bronze1man/yaml2json
+
+  # JSON
+  jq            CLI json processor
+                more information:
+                    https://stedolan.github.io/jq/
+
+  # KUBERNETES
+  kustomize     Kubernetes native configuration management
+                basic usage:
+                   kustomize build environments/qa
+                more information:
+                   https://kustomize.io/
+
+  kubeval       tool for validating a Kubernetes YAML or JSON configuration file
+                basic usage:
+                   kubeval mydescriptor.yaml
+                more information:
+                   https://github.com/instrumenta/kubeval
+
+  popeye        A Kubernetes Cluster Sanitizer
+                basic usage:
+                   popeye
+                more information:
+                   https://github.com/derailed/popeye
+
+  k9s           Kubernetes CLI To Manage Your Clusters In Style!
+                basic usage:
+                   k9s
+                more information:
+                    https://github.com/derailed/k9s
+
+EOF
+}
+
+alias k=kubectl
 
 function yamllint { docker run --rm -i -v $(pwd):/data cytopia/yamllint $@; }
 function yaml2json { docker run --rm -i -v $(pwd):/work -w /work simplealpine/yaml2json $@; }
