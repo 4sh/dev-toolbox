@@ -49,7 +49,7 @@ Functions:
                 more information:
                    https://kustomize.io/
 
-  helm          package manager for kubernetes
+  docker-helm   package manager for kubernetes
                 basic usage:
                     helm search hub <something>
                     helm show values <chart>
