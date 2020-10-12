@@ -1,6 +1,21 @@
+function docker-pull-if-present () {
+  if [[ "$(docker images -q $1 2> /dev/null)" != "" ]]; then
+    docker pull $1
+  fi
+}
+
 function 4dev-update () {
   echo "updating ~/4dev-toolbox..."
   git -C $HOME/.4dev-toolbox pull --rebase;
+
+  echo "updating local docker images"
+  docker-pull-if-present cytopia/yamllint:latest
+  docker-pull-if-present simplealpine/yaml2json:latest
+  docker-pull-if-present stedolan/jq:latest
+  docker-pull-if-present nekottyo/kustomize-kubeval:latest
+  docker-pull-if-present quay.io/derailed/popeye:latest
+  docker-pull-if-present quay.io/derailed/k9s
+
   echo "done - you can list functions with 4dev-help"
 }
 
